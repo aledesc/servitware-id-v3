@@ -2,6 +2,7 @@ package com.servitware.id;
 
 import com.servitware.base.StrId;
 import com.servitware.base.exception.InvalidAlphanumericIdException;
+import com.servitware.base.exception.InvalidStructuredAlphanumericIdException;
 import com.servitware.base.impl.StructuredStrIded;
 import com.servitware.id.exception.Invalid_DNI_IdException;
 
@@ -11,17 +12,19 @@ import java.util.Map;
 
 public class DNI implements StrId {
 
-    private final _DNI dni;
+    private final static String REGEX_DNI = "^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$";
+    private final _Dni dni;
 
     public DNI(String id) throws Invalid_DNI_IdException  {
 
         try {
-            dni = new _DNI(id);
-        } catch (InvalidAlphanumericIdException e) {
-            throw new Invalid_DNI_IdException();
-        }
+            dni = new _Dni(id, REGEX_DNI);
 
-        if ( !dni.hasAValidIdStructure() || dni.hasAValidIdLetter() ) {
+            if ( !dni.hasAValidIdLetter() ) {
+                throw new Invalid_DNI_IdException();
+            }
+
+        } catch (InvalidAlphanumericIdException | InvalidStructuredAlphanumericIdException e) {
             throw new Invalid_DNI_IdException();
         }
     }
@@ -31,11 +34,9 @@ public class DNI implements StrId {
         return dni.getId();
     }
 
-    private static class _DNI extends StructuredStrIded {
+    private static class _Dni extends StructuredStrIded {
 
         private final static int DIVISOR= 23;
-        private final static String REGEX_DNI = "^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$";
-
         private final static Map<Integer,Character> CONTROL_CHAR= new HashMap<>();
 
         static {
@@ -64,12 +65,8 @@ public class DNI implements StrId {
             CONTROL_CHAR.put(22,'E');
         }
 
-        public _DNI(String id) throws InvalidAlphanumericIdException {
-            super(id);
-        }
-
-        public boolean hasAValidIdStructure() {
-            return super.hasAValidIdStructure(REGEX_DNI);
+        public _Dni(String id, String structure) throws InvalidAlphanumericIdException, InvalidStructuredAlphanumericIdException {
+            super(id,structure);
         }
 
         public boolean hasAValidIdLetter() {
@@ -78,10 +75,9 @@ public class DNI implements StrId {
             Character letter= this.getId().charAt(8);
 
             int modulus = number % DIVISOR;
-            Character LETRA = CONTROL_CHAR.get(modulus);
+            Character _letter= CONTROL_CHAR.get(modulus);
 
-            return letter.equals( LETRA );
-
+            return letter.equals( _letter );
         }
     }
 }

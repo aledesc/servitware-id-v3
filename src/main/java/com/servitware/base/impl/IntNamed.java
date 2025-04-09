@@ -8,22 +8,19 @@ import lombok.ToString;
 
 @Getter
 @ToString
-public abstract class IntNamed extends IntIded implements Named
-{
+public abstract class IntNamed extends IntIded implements Named {
 	private final String name;
 
-	public IntNamed(int id, String name) throws InvalidNumericIdException, InvalidNameException
-	{
+	public IntNamed(int id, String name) throws InvalidNumericIdException, InvalidNameException {
 		super(id);
-		
+
 		if( name == null || name.isBlank() )
 			throw new InvalidNameException();
 		
-		this.name = name;
+		this.name = name.trim();
 	}
 
-	public IntNamed(String id, String name) throws InvalidNumericIdException, InvalidNameException
-	{
+	public IntNamed(String id, String name) throws InvalidNumericIdException, InvalidNameException {
 		this( Integer.parseInt(id), name);
 	}
 }

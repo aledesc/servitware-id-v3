@@ -1,11 +1,10 @@
 package com.servitware.base.exception;
 
-import com.servitware.base.StrId;
+import com.servitware.base.StructuredStrId;
 
-public class InvalidStructuredAlphanumericIdException extends Exception
-{
+public class InvalidStructuredAlphanumericIdException extends Exception {
 	public InvalidStructuredAlphanumericIdException()
 	{
-		super(StrId.INVALID_ALPHANUMERIC_EXCEPTION_MESSAGE);
+		super(StructuredStrId.INVALID_STRUCTURED_ID_EXCEPTION_MESSAGE);
 	}
 }

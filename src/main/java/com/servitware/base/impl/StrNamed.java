@@ -11,12 +11,10 @@ import lombok.ToString;
 @Getter
 @EqualsAndHashCode(callSuper = false)
 @ToString
-public abstract class StrNamed extends StrIded implements Named
-{
+public abstract class StrNamed extends StrIded implements Named {
 	private final String name;
 
-	public StrNamed(String id, String name) throws InvalidAlphanumericIdException, InvalidNameException
-	{
+	public StrNamed(String id, String name) throws InvalidAlphanumericIdException, InvalidNameException {
 		super( id );
 
 		if( name == null || name.isEmpty() )

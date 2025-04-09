@@ -9,20 +9,17 @@ import lombok.ToString;
 @Getter
 @EqualsAndHashCode
 @ToString
-public abstract class IntIded implements IntId
-{
+public abstract class IntIded implements IntId {
 	private final int id;
 
-	public IntIded(int id) throws InvalidNumericIdException
-	{
+	public IntIded(int id) throws InvalidNumericIdException {
 		if( id < MIN_ID )
 			throw new InvalidNumericIdException();
 		
 		this.id = id;
 	}
 
-	public IntIded(String id) throws InvalidNumericIdException
-	{
+	public IntIded(String id) throws InvalidNumericIdException {
 		if( id==null || id.isBlank())
 			throw new InvalidNumericIdException();
 

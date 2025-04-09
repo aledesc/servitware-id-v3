@@ -2,19 +2,21 @@ package com.servitware.id;
 
 import com.servitware.base.StrId;
 import com.servitware.base.exception.InvalidAlphanumericIdException;
+import com.servitware.base.exception.InvalidStructuredAlphanumericIdException;
 import com.servitware.base.impl.StructuredStrIded;
 import com.servitware.id.exception.Invalid_CIF_IdException;
-import com.servitware.id.exception.Invalid_NIE_IdException;
 
 
 public class CIF implements StrId {
 
-    private final _CIF cif;
+    private final static String REGEX_CIF = "^[ABCDEFGHKLMNPQS]\\d{2}\\d{5}[0-9|A-Z]$";
+    private final _Cif cif;
 
     public CIF(String id) throws Invalid_CIF_IdException {
+
         try {
-            cif = new _CIF(id);
-        } catch (InvalidAlphanumericIdException e) {
+            cif = new _Cif(id, REGEX_CIF);
+        } catch (InvalidAlphanumericIdException | InvalidStructuredAlphanumericIdException e) {
             throw new Invalid_CIF_IdException();
         }
     }
@@ -24,16 +26,9 @@ public class CIF implements StrId {
         return cif.getId();
     }
 
-    private static class _CIF extends StructuredStrIded {
-
-        private final static String REGEX_NIE = "^[XYZ][0-9]{7}[A-Z|0-9]$";
-
-        public _CIF(String id) throws InvalidAlphanumericIdException {
-            super(id);
-        }
-
-        public boolean hasAValidIdStructure() {
-            return super.hasAValidIdStructure(REGEX_NIE);
+    private static class _Cif extends StructuredStrIded {
+        public _Cif(String id, String structure) throws InvalidAlphanumericIdException, InvalidStructuredAlphanumericIdException {
+            super(id, structure);
         }
     }
 

@@ -9,15 +9,14 @@ import lombok.ToString;
 @Getter
 @EqualsAndHashCode
 @ToString
-public abstract class StrIded implements StrId
-{
+public abstract class StrIded implements StrId {
 	private final String id;
 
-	public StrIded(String id) throws InvalidAlphanumericIdException
-	{
+	public StrIded(String id) throws InvalidAlphanumericIdException {
+
 		if( id==null || id.isBlank())
 			throw new InvalidAlphanumericIdException();
 
-		this.id = id;
+		this.id = id.trim();
 	}
 }

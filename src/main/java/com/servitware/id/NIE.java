@@ -2,18 +2,20 @@ package com.servitware.id;
 
 import com.servitware.base.StrId;
 import com.servitware.base.exception.InvalidAlphanumericIdException;
+import com.servitware.base.exception.InvalidStructuredAlphanumericIdException;
 import com.servitware.base.impl.StructuredStrIded;
 import com.servitware.id.exception.Invalid_NIE_IdException;
 
 
 public class NIE implements StrId {
 
-    private final _NIE nie;
+    private final static String REGEX_NIE = "^[XYZW][0-9]{8}$";
+    private final _Nie nie;
 
     public NIE(String id) throws Invalid_NIE_IdException {
         try {
-            nie = new _NIE(id);
-        } catch (InvalidAlphanumericIdException e) {
+            nie = new _Nie(id,REGEX_NIE);
+        } catch (InvalidAlphanumericIdException | InvalidStructuredAlphanumericIdException e) {
             throw new Invalid_NIE_IdException();
         }
     }
@@ -23,16 +25,9 @@ public class NIE implements StrId {
         return nie.getId();
     }
 
-    private static class _NIE extends StructuredStrIded {
-
-        private final static String REGEX_NIE = "^[XYZW][0-9]{8}$";
-
-        public _NIE(String id) throws InvalidAlphanumericIdException {
-            super(id);
-        }
-
-        public boolean hasAValidIdStructure() {
-            return super.hasAValidIdStructure(REGEX_NIE);
+    private static class _Nie extends StructuredStrIded {
+        public _Nie(String id, String structure) throws InvalidAlphanumericIdException, InvalidStructuredAlphanumericIdException {
+            super(id,structure);
         }
     }
 
