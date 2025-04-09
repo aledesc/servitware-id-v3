@@ -22,19 +22,4 @@ public class StrNamed extends StrIded implements Named {
 		
 		this.name = name;
 	}
-
-	public static void main(String[] args) {
-
-
-        try {
-
-			StrNamed c = new StrNamed("asdsad"," pepe luis");
-			System.out.println(c.toString());
-
-
-
-        } catch (InvalidAlphanumericIdException | InvalidNameException e) {
-            System.out.println(e.getMessage());
-        }
-    }
 }
