@@ -8,7 +8,7 @@ import lombok.ToString;
 
 @Getter
 @ToString
-public abstract class IntNamed extends IntIded implements Named {
+public class IntNamed extends IntIded implements Named {
 	private final String name;
 
 	public IntNamed(int id, String name) throws InvalidNumericIdException, InvalidNameException {

@@ -4,93 +4,94 @@ import com.servitware.id.exception.Invalid_DNI_IdException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.MethodSource;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class DNITest {
+import java.util.stream.Stream;
 
-    // Test valid DNI numbers
-    @ParameterizedTest
-    @ValueSource(strings = {
-            "12345678Z",  // Valid DNI
-            "87654321X",  // Valid DNI
-            "00000000T",  // Valid DNI (minimum value)
-            "99999999R"   // Valid DNI (maximum value)
-    })
-    public void testValidDNI(String dniNumber) throws Invalid_DNI_IdException {
-        DNI dni = new DNI(dniNumber);
-        assertEquals(dniNumber, dni.getId());
-    }
+class DNITest {
 
-    // Test invalid DNI structures
-    @ParameterizedTest
-    @ValueSource(strings = {
-            "1234567Z",   // Too short
-            "123456789Z", // Too long
-            "A2345678Z",  // Letter in number part
-            "12345678",   // Missing letter
-            "12345678@",  // Invalid character
-            " 12345678Z", // Leading space
-            "12345678Z "  // Trailing space
-    })
-    public void testInvalidStructureDNI(String dniNumber) {
-        assertThrows(Invalid_DNI_IdException.class, () -> new DNI(dniNumber));
-    }
+    // Valid DNIs with correct letter calculation
+    private static final String[] VALID_DNIS = {
+            "00000000T", "00000001R", "00000002W", "00000003A",
+            "00000004G", "00000005M", "00000006Y", "00000007F",
+            "00000008P", "00000009D", "00000010X", "00000011B",
+            "00000012N", "00000013J", "00000014Z", "00000015S",
+            "00000016Q", "00000017V", "00000018H", "00000019L",
+            "00000020C", "00000021K", "00000022E", "12345678Z", "23456789D"
+    };
 
-    // Test DNI with invalid control letter
-    @ParameterizedTest
-    @ValueSource(strings = {
-            "12345678A",  // Invalid letter (should be Z)
-            "87654321A",  // Invalid letter (should be X)
-            "00000000A",  // Invalid letter (should be T)
-            "99999999A"   // Invalid letter (should be R)
-    })
-    public void testInvalidControlLetterDNI(String dniNumber) {
-        assertThrows(Invalid_DNI_IdException.class, () -> new DNI(dniNumber));
-    }
-
-    // Test null input
     @Test
-    public void testNullDNI() {
-        assertThrows(Invalid_DNI_IdException.class, () -> new DNI(null));
-    }
-
-    // Test empty string input
-    @Test
-    public void testEmptyDNI() {
-        assertThrows(Invalid_DNI_IdException.class, () -> new DNI(""));
-    }
-
-    // Test case sensitivity (should be case insensitive)
-    @Test
-    public void testCaseInsensitivity() throws Invalid_DNI_IdException {
-        DNI lowerCase = new DNI("12345678z");
-        DNI upperCase = new DNI("12345678Z");
-        assertEquals(lowerCase.getId(), upperCase.getId());
-    }
-
-    // Test specific known valid DNI numbers
-    @Test
-    public void testKnownValidDNIs() throws Invalid_DNI_IdException {
-        // 12345678 mod 23 = 14 → Z
-        DNI dni1 = new DNI("12345678Z");
-        assertEquals("12345678Z", dni1.getId());
-
-        // 98765432 mod 23 = 10 → X
-        DNI dni2 = new DNI("98765432X");
-        assertEquals("98765432X", dni2.getId());
-    }
-
-    // Test all possible control letters
-    @Test
-    public void testAllControlLetters() throws Invalid_DNI_IdException {
-        String[] validLetters = {"T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X",
-                "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E"};
-
-        for (int i = 0; i < 23; i++) {
-            String numberPart = String.format("%08d", i * 23); // Numbers that mod 23 = 0-22
-            String dniNumber = numberPart + validLetters[i];
-            DNI dni = new DNI(dniNumber);
-            assertEquals(dniNumber, dni.getId());
+    void constructor_WithValidDNI_DoesNotThrowException() {
+        for (String validDni : VALID_DNIS) {
+            assertDoesNotThrow(() -> new DNI(validDni),
+                    "Should not throw for valid DNI: " + validDni);
         }
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "00000000A", "00000001B", "00000002C", "00000003D",
+            "12345678A", "98765432B", "45678901C", "23456789E"
+    })
+    void constructor_WithInvalidLetter_ThrowsInvalidDNIIdException(String invalidDni) {
+        assertThrows(Invalid_DNI_IdException.class, () -> new DNI(invalidDni),
+                "Should throw for DNI with invalid letter: " + invalidDni);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "1234567A",   // Too short
+            "123456789A",  // Too long
+            "A2345678B",   // Letter at start
+            "123-4567X",   // Contains hyphen
+            "12345678 ",   // Trailing space
+            " 12345678T",  // Leading space
+            "12345678t",   // Lowercase letter
+            "1234567X8",   // Letter in wrong position
+            "12345678*"    // Invalid character
+    })
+    void constructor_WithInvalidFormat_ThrowsInvalidDNIIdException(String invalidDni) {
+        assertThrows(Invalid_DNI_IdException.class, () -> new DNI(invalidDni),
+                "Should throw for DNI with invalid format: " + invalidDni);
+    }
+
+    @ParameterizedTest
+    @NullAndEmptySource
+    void constructor_WithNullOrEmpty_ThrowsInvalidDNIIdException(String input) {
+        assertThrows(Invalid_DNI_IdException.class, () -> new DNI(input));
+    }
+
+    @Test
+    void getId_ReturnsCorrectValue() throws Invalid_DNI_IdException {
+        String testDni = "12345678Z";
+        DNI dni = new DNI(testDni);
+        assertEquals(testDni, dni.getId());
+    }
+
+    @Test
+    void getId_ReturnsSameValueAsInput() throws Invalid_DNI_IdException {
+        for (String validDni : VALID_DNIS) {
+            DNI dni = new DNI(validDni);
+            assertEquals(validDni, dni.getId(),
+                    "getId() should return the same value as input for DNI: " + validDni);
+        }
+    }
+
+    @Test
+    void differentObjectsWithSameDNI_AreIndependent() throws Invalid_DNI_IdException {
+        String testDni = "00000013J";
+        DNI dni1 = new DNI(testDni);
+        DNI dni2 = new DNI(testDni);
+
+        assertEquals(dni1.getId(), dni2.getId());
+        assertNotSame(dni1, dni2);
+    }
+
+
+    private static Stream<String> provideValidDNILetterCombinations() {
+        return Stream.of(VALID_DNIS);
+    }
+
 }

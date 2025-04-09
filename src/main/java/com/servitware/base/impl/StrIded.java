@@ -9,7 +9,7 @@ import lombok.ToString;
 @Getter
 @EqualsAndHashCode
 @ToString
-public abstract class StrIded implements StrId {
+public class StrIded implements StrId {
 	private final String id;
 
 	public StrIded(String id) throws InvalidAlphanumericIdException {

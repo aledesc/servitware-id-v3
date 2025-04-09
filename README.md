@@ -1,6 +1,10 @@
 # servitware-id-v3
 
-This library contains different interfaces, abstract classes and concrete classes to work with Entities whose identifier is an integer or a string of characters with or without structure.
+This library grew out of work done to validate and curate the identification numbers of a long list of people whose personal information was not complete or accurate.
+
+This library contains different interfaces, and classes to work with Entities whose identifier is an integer or a string of characters with or without structure.
+
+Given the nature of the related entities, a design was decided using hierarchies keeping them as tight as possible, and finally, composition is also used. 
 
 **The interfaces are:**
     

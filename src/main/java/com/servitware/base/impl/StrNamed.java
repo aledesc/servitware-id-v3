@@ -11,7 +11,7 @@ import lombok.ToString;
 @Getter
 @EqualsAndHashCode(callSuper = false)
 @ToString
-public abstract class StrNamed extends StrIded implements Named {
+public class StrNamed extends StrIded implements Named {
 	private final String name;
 
 	public StrNamed(String id, String name) throws InvalidAlphanumericIdException, InvalidNameException {
@@ -22,4 +22,19 @@ public abstract class StrNamed extends StrIded implements Named {
 		
 		this.name = name;
 	}
+
+	public static void main(String[] args) {
+
+
+        try {
+
+			StrNamed c = new StrNamed("asdsad"," pepe luis");
+			System.out.println(c.toString());
+
+
+
+        } catch (InvalidAlphanumericIdException | InvalidNameException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

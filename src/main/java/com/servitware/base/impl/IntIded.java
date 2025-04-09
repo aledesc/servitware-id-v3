@@ -9,7 +9,7 @@ import lombok.ToString;
 @Getter
 @EqualsAndHashCode
 @ToString
-public abstract class IntIded implements IntId {
+public class IntIded implements IntId {
 	private final int id;
 
 	public IntIded(int id) throws InvalidNumericIdException {
