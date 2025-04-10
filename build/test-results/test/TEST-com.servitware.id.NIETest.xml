@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.servitware.id.NIETest" tests="9" skipped="0" failures="0" errors="0" timestamp="2025-04-10T06:20:13" hostname="sparta" time="0.011">
+  <properties/>
+  <testcase name="testInvalidNIEExtraCharacters()" classname="com.servitware.id.NIETest" time="0.001"/>
+  <testcase name="testInvalidNIENotEnoughDigits()" classname="com.servitware.id.NIETest" time="0.001"/>
+  <testcase name="testValidNIEStartingWithW()" classname="com.servitware.id.NIETest" time="0.001"/>
+  <testcase name="testValidNIEStartingWithX()" classname="com.servitware.id.NIETest" time="0.001"/>
+  <testcase name="testValidNIEStartingWithY()" classname="com.servitware.id.NIETest" time="0.0"/>
+  <testcase name="testValidNIEStartingWithZ()" classname="com.servitware.id.NIETest" time="0.001"/>
+  <testcase name="testInvalidNIEWithLettersInNumberPart()" classname="com.servitware.id.NIETest" time="0.001"/>
+  <testcase name="testInvalidNIEWrongStartLetter()" classname="com.servitware.id.NIETest" time="0.001"/>
+  <testcase name="testNullInput()" classname="com.servitware.id.NIETest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

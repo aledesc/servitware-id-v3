@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.servitware.id.CIFTest" tests="26" skipped="0" failures="0" errors="0" timestamp="2025-04-10T06:20:13" hostname="sparta" time="0.047">
+  <properties/>
+  <testcase name="differentObjectsWithSameCIF_AreIndependent()" classname="com.servitware.id.CIFTest" time="0.001"/>
+  <testcase name="[1] null" classname="com.servitware.id.CIFTest" time="0.001"/>
+  <testcase name="[2] " classname="com.servitware.id.CIFTest" time="0.001"/>
+  <testcase name="[1] Z12345678" classname="com.servitware.id.CIFTest" time="0.002"/>
+  <testcase name="[2] A1234567" classname="com.servitware.id.CIFTest" time="0.004"/>
+  <testcase name="[3] A123456789" classname="com.servitware.id.CIFTest" time="0.001"/>
+  <testcase name="[4] A12-45678" classname="com.servitware.id.CIFTest" time="0.001"/>
+  <testcase name="[5] A1234567 " classname="com.servitware.id.CIFTest" time="0.001"/>
+  <testcase name="[6]  A12345678" classname="com.servitware.id.CIFTest" time="0.001"/>
+  <testcase name="[7] a12345678" classname="com.servitware.id.CIFTest" time="0.001"/>
+  <testcase name="[8] I12345678" classname="com.servitware.id.CIFTest" time="0.0"/>
+  <testcase name="[9] J12345678" classname="com.servitware.id.CIFTest" time="0.001"/>
+  <testcase name="[10] O12345678" classname="com.servitware.id.CIFTest" time="0.0"/>
+  <testcase name="[11] R12345678" classname="com.servitware.id.CIFTest" time="0.001"/>
+  <testcase name="[12] T12345678" classname="com.servitware.id.CIFTest" time="0.001"/>
+  <testcase name="[13] U12345678" classname="com.servitware.id.CIFTest" time="0.0"/>
+  <testcase name="[14] V12345678" classname="com.servitware.id.CIFTest" time="0.001"/>
+  <testcase name="[15] W12345678" classname="com.servitware.id.CIFTest" time="0.0"/>
+  <testcase name="[16] X12345678" classname="com.servitware.id.CIFTest" time="0.001"/>
+  <testcase name="[17] Y12345678" classname="com.servitware.id.CIFTest" time="0.001"/>
+  <testcase name="[18] Z12345678" classname="com.servitware.id.CIFTest" time="0.0"/>
+  <testcase name="[19] A12X45678" classname="com.servitware.id.CIFTest" time="0.001"/>
+  <testcase name="[20] A1234567*" classname="com.servitware.id.CIFTest" time="0.001"/>
+  <testcase name="constructor_WithValidCIF_DoesNotThrowException()" classname="com.servitware.id.CIFTest" time="0.002"/>
+  <testcase name="getId_ReturnsCorrectValue()" classname="com.servitware.id.CIFTest" time="0.0"/>
+  <testcase name="getId_ReturnsSameValueAsInput()" classname="com.servitware.id.CIFTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

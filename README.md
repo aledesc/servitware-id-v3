@@ -13,7 +13,7 @@ Given the nature of the related entities, a design was decided using hierarchies
     - StructuredId
     - IntId
 
-The abstract classes are:
+The classes are:
 
     - StrIded
     - StrNamed
@@ -29,14 +29,14 @@ Classes are also created to manage numbers of Spanish identification documents f
 
 **Error handling**
 
-Abstract classes throw exceptions in case of invalid identifiers, depending on the type, these are:
+Classes throw exceptions in case of invalid identifiers, depending on the type, these are:
 
     - InvalidAlphanumericIdException
     - InvalidNameException
     - InvalidNumericIdException
     - InvalidStructuredAlphanumericIdException
 
-The concrete classes throw the following exceptions:
+Identifiers classes throw the following exceptions:
 
     - Invalid_CIF_IdException
     - Invalid_DNI_IdException
@@ -44,10 +44,8 @@ The concrete classes throw the following exceptions:
 
 **LookUps**
 
-In almost all systems there are referential entities that in general have a numeric identifier, but that can also be a string of characters, this librebase to these classes two classes are created to manage referential entities, whose identifier can be an integer or a string of characters, these classes are:
+In almost all systems there are referential entities that in general have a numeric identifier, but that can also be a string of characters, this library has some classes that represents such entities, those are:
 
     - LookUp
     - LookUpStr
     - LookUpUUID
-
-Translated with DeepL.com (free version)

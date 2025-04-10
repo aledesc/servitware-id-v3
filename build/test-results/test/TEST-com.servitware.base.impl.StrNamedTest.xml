@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.servitware.base.impl.StrNamedTest" tests="26" skipped="0" failures="0" errors="0" timestamp="2025-04-10T06:20:13" hostname="sparta" time="0.041">
+  <properties/>
+  <testcase name="[1] null" classname="com.servitware.base.impl.StrNamedTest" time="0.002"/>
+  <testcase name="[2] " classname="com.servitware.base.impl.StrNamedTest" time="0.0"/>
+  <testcase name="[3]  " classname="com.servitware.base.impl.StrNamedTest" time="0.001"/>
+  <testcase name="[4]   " classname="com.servitware.base.impl.StrNamedTest" time="0.0"/>
+  <testcase name="[5] &#9;" classname="com.servitware.base.impl.StrNamedTest" time="0.001"/>
+  <testcase name="[6] &#10;" classname="com.servitware.base.impl.StrNamedTest" time="0.001"/>
+  <testcase name="shouldBeInstanceOfNamedAndStrIded()" classname="com.servitware.base.impl.StrNamedTest" time="0.001"/>
+  <testcase name="[1]  " classname="com.servitware.base.impl.StrNamedTest" time="0.001"/>
+  <testcase name="[2]   name  " classname="com.servitware.base.impl.StrNamedTest" time="0.001"/>
+  <testcase name="[3] &#9;name&#9;" classname="com.servitware.base.impl.StrNamedTest" time="0.0"/>
+  <testcase name="[4] &#10;name&#10;" classname="com.servitware.base.impl.StrNamedTest" time="0.001"/>
+  <testcase name="getName_ShouldReturnCorrectValue()" classname="com.servitware.base.impl.StrNamedTest" time="0.001"/>
+  <testcase name="[1] id1, Name 1" classname="com.servitware.base.impl.StrNamedTest" time="0.0"/>
+  <testcase name="[2] ID2, Name Two" classname="com.servitware.base.impl.StrNamedTest" time="0.001"/>
+  <testcase name="[3]   id3  , Trimmed Name" classname="com.servitware.base.impl.StrNamedTest" time="0.0"/>
+  <testcase name="[4] a, Single Character Name" classname="com.servitware.base.impl.StrNamedTest" time="0.001"/>
+  <testcase name="[5] long-id-123, Long Name With Spaces And Special Chars!@#" classname="com.servitware.base.impl.StrNamedTest" time="0.001"/>
+  <testcase name="[1] null" classname="com.servitware.base.impl.StrNamedTest" time="0.001"/>
+  <testcase name="[2] " classname="com.servitware.base.impl.StrNamedTest" time="0.001"/>
+  <testcase name="constructorWithEmptyName_ShouldThrowException()" classname="com.servitware.base.impl.StrNamedTest" time="0.001"/>
+  <testcase name="[1] a" classname="com.servitware.base.impl.StrNamedTest" time="0.001"/>
+  <testcase name="[2]  " classname="com.servitware.base.impl.StrNamedTest" time="0.0"/>
+  <testcase name="[3] A" classname="com.servitware.base.impl.StrNamedTest" time="0.001"/>
+  <testcase name="[4] 1" classname="com.servitware.base.impl.StrNamedTest" time="0.001"/>
+  <testcase name="[5] Long name with spaces" classname="com.servitware.base.impl.StrNamedTest" time="0.0"/>
+  <testcase name="[6] Special!@#$" classname="com.servitware.base.impl.StrNamedTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

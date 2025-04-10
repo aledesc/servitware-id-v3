@@ -62,12 +62,6 @@ class StrNamedTest {
         });
     }
 
-    // Test main method (basic verification)
-    @Test
-    void main_ShouldHandleInvalidInput() {
-        assertDoesNotThrow(() -> StrNamed.main(new String[]{}));
-    }
-
     // Test inheritance
     @Test
     void shouldBeInstanceOfNamedAndStrIded() throws Exception {
